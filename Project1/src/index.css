@@ -22,19 +22,29 @@
   height: 150px;
 }
 
+.WorkoutCardsSect {
+  display: flex;
+  justify-content: space-around;
+}
+
 .WorkoutCard {
   background-color: black;
   color: white;
-  width: 250px;
+  width: 295px;
   height: 500px;
+  border-radius: 15px;
+  box-shadow: #0086fa;
 }
 
-
-.WorkoutCardsSect {
-  display: flex;
-  justify-content: space-between;
+.WorkoutDesc {
+  height: 320px;
+  width: 200px;
+  background-color: white;
+  padding: 10px;
+  margin: 95px auto;
+  border-radius: 25px;
+  color: black;
 }
-
 
 a {
   font-weight: 500;
