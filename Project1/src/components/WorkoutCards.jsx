@@ -8,7 +8,7 @@ const WorkoutCards = (props) => {
         <img id="WorkoutCardImg" src={props.src} alt='workout image' />
       </div>
       <div className="WorkoutDesc">
-        <p>{props.desc}</p>
+        <p id={props.id}>{props.desc}</p>
       </div>
     </div>
   )

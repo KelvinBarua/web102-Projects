@@ -65,6 +65,22 @@
   flex-wrap: wrap;
 }
 
+.Extras {
+  display: flex;
+  justify-content: center;
+  column-gap: 25px;
+  row-gap: 20px;
+  flex-wrap: wrap;
+}
+
+#StrengthLevel{
+  font-size: 18px;
+}
+
+#TDEE{
+  font-size: 18px;
+}
+
 a {
   font-weight: 500;
   color: #646cff;
