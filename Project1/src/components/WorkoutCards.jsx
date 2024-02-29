@@ -4,6 +4,9 @@ const WorkoutCards = (props) => {
   return (
     <div className="WorkoutCard">
       <p>{props.Split}</p>
+      <div>
+        <img id="WorkoutCardImg" src={props.src} alt='workout image' />
+      </div>
       <div className="WorkoutDesc">
         <p>{props.desc}</p>
       </div>
