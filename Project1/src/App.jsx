@@ -12,9 +12,9 @@ const App = () => {
       <SOP_Logo />
       <h2>Top 3 Workout Splits <br></br>(Beginners Edition)</h2>
       <div className = "WorkoutCardsSect">
-        <WorkoutCards Split="Push/Pull/Legs" desc="A 3 or 6-day split that trains your body in three individual functions. A push day training chest/shoulders and triceps, a pull day training back and biceps, and finally a leg day. Allows you to train lagging body parts and large room for variety. Ideal for bodybuilding and strength." src={Images.imgOne} link="https://www.youtube.com/watch?v=TJHZI3McmE4&t=60s"/>
+        <WorkoutCards Split="Push/Pull/Legs" desc="A 3 or 6-day split that trains your body in three individual functions. A push day training chest/shoulders and triceps, a pull day training back and biceps, and finally a leg day. Allows you to train lagging body parts and large room for variety. Ideal for bodybuilding and strength." src={Images.imgTwo} link="https://www.youtube.com/watch?v=TJHZI3McmE4&t=60s"/>
         
-        <WorkoutCards Split = "Full Body" desc="Train all muscle groups equally on any given training day. Bigger emphasis on compound movements like the barbell bench press, barbell squat, and deadlifts. Great for learning the basic compound movements and finding your groove. Excellent beginner option, can be ran for 3 days or more." src={Images.imgTwo} link="https://www.youtube.com/watch?v=5JmWguyvu7Y"/>
+        <WorkoutCards Split = "Full Body" desc="Train all muscle groups equally on any given training day. Bigger emphasis on compound movements like the barbell bench press, barbell squat, and deadlifts. Great for learning the basic compound movements and finding your groove. Excellent beginner option, can be ran for 3 days or more." src={Images.imgOne} link="https://www.youtube.com/watch?v=5JmWguyvu7Y"/>
 
         <WorkoutCards Split = "Upper/Lower" desc="Train the upper region of the body in one day and the lower region (leg day) the other. Upper body days consist of exercsies for the chest, shoulders, back, and all the muscles in the arm. Leg day follows a standard leg day procedure. Perfect alternative to push/pull/legs if short on time/weekly frequency." src={Images.imgThree} link="https://www.youtube.com/watch?v=eWPj3ikAExk"/>
       </div>
