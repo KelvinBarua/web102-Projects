@@ -1,0 +1,28 @@
+const flashcardsContent = [
+  { question: "Chlorate", answer: "ClO₃⁻" },
+  { question: "Chlorite", answer: "4" },
+  { question: "Perchlorate", answer: "4" },
+  { question: "Hypochlorite", answer: "4" },
+  { question: "Nitrite", answer: "4" },
+  { question: "Nitrate", answer: "ClO₃⁻" },
+  { question: "Sulfite", answer: "4" },
+  { question: "Hydrogen Sulfate", answer: "4" },
+  { question: "Hydrogen Sulfite", answer: "4" },
+  { question: "Phosphate", answer: "4" },
+  { question: "Hydrogen Phosphate", answer: "ClO₃⁻" },
+  { question: "Dihydrogen Phosphate", answer: "4" },
+  { question: "Carbonate", answer: "4" },
+  { question: "Bicarbonate", answer: "4" },
+  { question: "Permanganate", answer: "4" },
+  { question: "Chromate", answer: "ClO₃⁻" },
+  { question: "Dichromate", answer: "4" },
+  { question: "Ammonium", answer: "4" },
+  { question: "Hydronium", answer: "4" },
+  { question: "Acetate", answer: "4" },
+  { question: "Cyanide", answer: "ClO₃⁻" },
+  { question: "Azide", answer: "4" },
+  { question: "Peroxide", answer: "4" },
+  { question: "Hydroxide", answer: "4" },
+];
+
+export default flashcardsContent;
