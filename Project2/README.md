@@ -31,7 +31,7 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented required features:
 
 <video width="320" height="240" controls>
-  <source src="Project2/src/assets/Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+  <source src="[Project2/src/assets/Untitled video - Made with Clipchamp.mp4](https://github.com/KelvinBarua/web102-Projects/blob/fe4a636712aab517ee5b6001365e9931363dcde7/Project2/src/assets/Untitled%20video%20-%20Made%20with%20Clipchamp.mp4)" type="video/mp4">
 </video>
 
 <!-- Replace this with whatever GIF tool you used! -->
