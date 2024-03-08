@@ -2,21 +2,34 @@ import { useState } from 'react';
 import './App.css';
 import Flashcard from './components/Flashcards';
 import flashcardsContent from "./components/FlashcardContent";
+import currentCardTracker from './currentCardTracker';
 
 
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0); //controls which flashcard is showing, initially 0.
   const [showAnswer, setShowAnswer] = useState(false); //controls whether the answer is shown or not.
 
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+  
   const handleToggleAnswer = () => setShowAnswer(!showAnswer);
+
+  var currCard = 0;
+
   const nextCard = () => {
-    setCurrentIndex(prevIndex => (prevIndex + 1) % flashcardsContent.length);
+    currCard = getRandomInt(flashcardsContent.length);
+    currentCardTracker.push(currCard);
+    console.log(currentCardTracker);  
+    setCurrentIndex(prevIndex => (currCard));
     setShowAnswer(false); // Resets showAnswer when changing the card
   }
 
   const prevCard = () => {
-    if(currentIndex >= 1){
-      setCurrentIndex(prevIndex => (prevIndex - 1) % flashcardsContent.length);
+    if(currentCardTracker.length > 1){
+      setCurrentIndex(prevIndex => (currentCardTracker[currentCardTracker.length - 1]));
+      currentCardTracker.pop();
+      console.log(currentCardTracker);
       setShowAnswer(false); // Resets showAnswer when changing the card
     }
   }
@@ -33,4 +46,5 @@ const App = () => {
     </div>
   )
 }
+
 export default App;
