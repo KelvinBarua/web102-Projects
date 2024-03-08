@@ -30,7 +30,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<video src="https://github.com/KelvinBarua/web102-Projects/blob/677b4e9b14ca6b53bc1a470a29d501c0e52a6000/Project2/src/assets/Untitled%20video%20-%20Made%20with%20Clipchamp.mp4" width="320" height="240" controls></video>
+<img src="https://github.com/KelvinBarua/web102-Projects/blob/677b4e9b14ca6b53bc1a470a29d501c0e52a6000/Project2/src/assets/Untitled%20video%20-%20Made%20with%20Clipchamp.mp4">
 
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
