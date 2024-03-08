@@ -30,8 +30,6 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-[<img src="https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg" width="50%">](https://youtu.be/CmT6B44ND0A)
-
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with ...  
 <!-- Recommended tools:
