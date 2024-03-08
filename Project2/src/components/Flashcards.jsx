@@ -6,9 +6,9 @@ const Flashcard = (props) => {
   return (
     <div className="Flashcard" onClick={props.ClickFunction}>
       {props.showAnswer ? (
-        <p>Answer: {currentCard.answer}</p>
+        <p>⚛ Answer:{currentCard.answer}</p>
       ) : (
-        <p>Question: {currentCard.question}</p>
+        <p>🧪 {currentCard.question}  🧪</p>
       )}
     </div>
   )
