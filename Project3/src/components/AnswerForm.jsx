@@ -1,24 +1,18 @@
 import React from "react";
 import { useState } from "react";
 
-const AnswerForm = ({correctAnswer}) => {
-
-  const[userInput, setUserInput] = useState('');
-  const[answerFeedback, setAnswerFeedback] = useState('');
-
-  const [showAnswer, setShowAnswer] = useState(false);
+const AnswerForm = ({correctAnswer, userInput, setUserInput, answerFeedback, setAnswerFeedback, resetAnswerFeedback}) => {
 
   const onCheckAnswer = (e) => {
     e.preventDefault();
 
     if(userInput.toLowerCase() == correctAnswer.toLowerCase()){
       setAnswerFeedback("Correct");
-      setShowAnswer(true);
-      setUserInput("");
+      setUserInput(`${userInput} is correct!`);
     }
     else if(userInput.toLowerCase() != correctAnswer.toLowerCase()){
       setAnswerFeedback("Wrong");
-      setShowAnswer(false);
+      setUserInput("Wrong, try again :D");
     }
   }
 
@@ -31,7 +25,7 @@ const AnswerForm = ({correctAnswer}) => {
           value={userInput} 
           type="text" 
           name="Guess Answer:" 
-          placeholder="Type molecular formula"
+          placeholder="Type your guess! If charge magnitude >1, use ( )"
           onChange={(e) => setUserInput(e.target.value)}></input>
 
           <button type="submit" onClick={onCheckAnswer}>Check Answer</button>
