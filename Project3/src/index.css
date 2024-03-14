@@ -71,6 +71,32 @@ body {
   font-size: 15px;
 }
 
+.Correct {
+  background-color: green;
+  
+  margin-top: 15px;
+  margin-bottom: 25px;
+  border-radius: 15px;
+
+  width: 435px;
+  height: 55px;
+
+  font-size: 35px;
+}
+
+.Wrong {
+  background-color: red;
+  
+  margin-top: 15px;
+  margin-bottom: 25px;
+  border-radius: 15px;
+
+  width: 435px;
+  height: 55px;
+
+  font-size: 35px;
+}
+
 h1 {
   font-size: 3.2em;
   line-height: 1.1;

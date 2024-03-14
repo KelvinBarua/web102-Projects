@@ -41,8 +41,8 @@ const App = () => {
       <h3>⚗️Memorize the molecular formulas of the basic polyatomic ions!⚗️</h3>
       <h3>Number of cards: {flashcardsContent.length}</h3>
       <p>Current card: {currentIndex + 1}</p>
-      <Flashcard Flashcards={flashcardsContent} currIndex={currentIndex} ClickFunction={handleToggleAnswer} showAnswer={showAnswer}/>
-      <AnswerForm />
+      <Flashcard Flashcards={flashcardsContent} currIndex={currentIndex} ClickFunction={handleToggleAnswer} showAnswer={showAnswer} />
+      <AnswerForm correctAnswer={flashcardsContent[currentIndex].typeAnswer} showAnswer={showAnswer} />
       <button onClick={prevCard}>Prev</button>
       <button onClick={nextCard}>Next</button>
     </div>
