@@ -5,8 +5,6 @@ import flashcardsContent from "./components/FlashcardContent";
 import currentCardTracker from './currentCardTracker';
 import AnswerForm from './components/AnswerForm';
 
-
-
 const App = () => {
   const [currentIndex, setCurrentIndex] = useState(0); //controls which flashcard is showing, initially 0.
 
@@ -16,6 +14,17 @@ const App = () => {
   const[answerFeedback, setAnswerFeedback] = useState('');
   const[userInput, setUserInput] = useState('');
   //end of AnswerForm component variables.
+
+  const[shuffle, setShuffle] = useState('ON');
+
+  // const toggleShuffle = () => {
+  //   if(shuffle == 'ON'){
+  //     setShuffle('OFF');
+  //   }
+  //   else {
+  //     setShuffle('ON');
+  //   }
+  // }
 
   const resetAnswerFeedback = () => {
     setAnswerFeedback('');
@@ -67,6 +76,8 @@ const App = () => {
       <AnswerForm correctAnswer={flashcardsContent[currentIndex].typeAnswer} showAnswer={showAnswer} answerFeedback={answerFeedback} userInput={userInput} setUserInput={setUserInput} setAnswerFeedback={setAnswerFeedback} resetAnswerFeedback={resetAnswerFeedback} />
       <button onClick={prevCard}>Prev</button>
       <button onClick={nextCard}>Next</button>
+      {/* <button onClick={toggleShuffle}>{`Shuffle: ${shuffle}`}</button>
+      {console.log(shuffle)} */}
     </div>
   )
 }

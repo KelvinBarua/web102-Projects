@@ -115,8 +115,12 @@ button {
   transition: border-color 0.25s;
   margin: 5px;
 }
+button:active{
+  transform: scale(0.9);
+}
 button:hover {
   border-color: #646cff;
+  transition: 0.1s;
 }
 button:focus,
 button:focus-visible {

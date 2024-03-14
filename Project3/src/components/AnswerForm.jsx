@@ -26,7 +26,8 @@ const AnswerForm = ({correctAnswer, userInput, setUserInput, answerFeedback, set
           type="text" 
           name="Guess Answer:" 
           placeholder="Type your guess! If charge magnitude >1, use ( )"
-          onChange={(e) => setUserInput(e.target.value)}></input>
+          onChange={(e) => setUserInput(e.target.value)}
+          onClick={(e) => setUserInput('')}></input>
 
           <button type="submit" onClick={onCheckAnswer}>Check Answer</button>
         </form>
