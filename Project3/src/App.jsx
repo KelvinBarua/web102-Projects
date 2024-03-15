@@ -17,6 +17,8 @@ const App = () => {
 
   const[shuffle, setShuffle] = useState('ON');
 
+  const[numAttempts, setNumAttempts] = useState(0);
+
   // const toggleShuffle = () => {
   //   if(shuffle == 'ON'){
   //     setShuffle('OFF');
@@ -38,7 +40,11 @@ const App = () => {
     return Math.floor(Math.random() * max);
   }
   
-  const handleToggleAnswer = () => setShowAnswer(!showAnswer);
+  const handleToggleAnswer = () => {
+    if(answerFeedback == "Correct" || numAttempts > 2){
+      setShowAnswer(!showAnswer);
+    }
+  }
 
   var currCard = 0;
   if(currentCardTracker.length == 0){
@@ -53,6 +59,7 @@ const App = () => {
     setShowAnswer(false); // Resets showAnswer when changing the card
     resetAnswerFeedback();
     resetUserInput();
+    setNumAttempts(0);
   }
 
   const prevCard = () => {
@@ -63,6 +70,7 @@ const App = () => {
       setShowAnswer(false); // Resets showAnswer when changing the card
       resetAnswerFeedback();
       resetUserInput();
+      setNumAttempts(0);
     }
   }
 
@@ -73,7 +81,7 @@ const App = () => {
       <h3>Number of cards: {flashcardsContent.length}</h3>
       <p>Current card: {currentIndex + 1}</p>
       <Flashcard Flashcards={flashcardsContent} currIndex={currentIndex} ClickFunction={handleToggleAnswer} showAnswer={showAnswer} />
-      <AnswerForm correctAnswer={flashcardsContent[currentIndex].typeAnswer} showAnswer={showAnswer} answerFeedback={answerFeedback} userInput={userInput} setUserInput={setUserInput} setAnswerFeedback={setAnswerFeedback} resetAnswerFeedback={resetAnswerFeedback} />
+      <AnswerForm correctAnswer={flashcardsContent[currentIndex].typeAnswer} showAnswer={showAnswer} answerFeedback={answerFeedback} userInput={userInput} setUserInput={setUserInput} setAnswerFeedback={setAnswerFeedback} resetAnswerFeedback={resetAnswerFeedback} numAttempts={numAttempts} setNumAttempts={setNumAttempts} />
       <button onClick={prevCard}>Prev</button>
       <button onClick={nextCard}>Next</button>
       {/* <button onClick={toggleShuffle}>{`Shuffle: ${shuffle}`}</button>

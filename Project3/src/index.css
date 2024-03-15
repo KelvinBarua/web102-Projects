@@ -40,9 +40,11 @@ a:hover {
 
 .Flashcard:hover {
   transition: 0.2s;
+  box-shadow: 0px 0px 8px 4px #f9f9f99d;
 }
 
 .Flashcard:active {
+  transition: 0.2s;
   transform: rotateX(-25deg);
 }
 
@@ -119,13 +121,11 @@ button:active{
   transform: scale(0.9);
 }
 button:hover {
+  box-shadow: 0px 0px 8px 4px #f9f9f99d;
   border-color: #646cff;
   transition: 0.1s;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+
 
 @media (prefers-color-scheme: light) {
   :root {
