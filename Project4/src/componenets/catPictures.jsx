@@ -22,7 +22,8 @@ const catPictures = () =>{
         },
       }
       );
-      if(response.data[0].breeds.length > 0 && response.data[0].breeds[0].name && response.data[0].breeds[0].origin){
+
+      if(response.data[0].breeds.length > 0 && response.data[0].breeds[0].name && response.data[0].breeds[0].origin && (!catNameList.includes(response.data[0].breeds[0].name) && !catOriginList.includes(response.data[0].breeds[0].origin))){
         setCatImg(response.data[0].url);
         setCatName(response.data[0].breeds[0].name);
         setCatOrigin(response.data[0].breeds[0].origin);
@@ -47,26 +48,40 @@ const catPictures = () =>{
   const onNewRequest = () =>{
     resetCatBreedData();
     fetchRandomCat();
-    updateNameList([]);
-    updateOriginList([]);
   }
 
-  const updateListofNames = () =>{
-    if(!catNameList.includes(catName)){
-      catNameList.push(catName);
+  const updateListofNames = () => {
+    if (!catNameList.includes(catName)) {
+      updateNameList((prevList) => [...prevList, catName]);
     }
-  }
-  const updateListofOrigins = () =>{
-    if(!catOriginList.includes(catOrigin)){
-      catOriginList.push(catOrigin); 
+  };
+  
+  const updateListofOrigins = () => {
+    if (!catOriginList.includes(catOrigin)) {
+      updateOriginList((prevList) => [...prevList, catOrigin]);
     }
-  }
+  };
+
+  const removeNameFromList = (catName) => {
+    updateNameList((prevList) => prevList.filter(name => name !== catName));
+  };
+  
+  const removeOriginFromList = (catOrigin) => {
+    updateOriginList((prevList) => prevList.filter(origin => origin !== catOrigin));
+  };
+
   return (
     <div>
       <h1>Random Cat Generator</h1>
       <div className="randomCatContainer">
-        {catImg && <img className="cat_Img" src={catImg} alt="Random Cat" />}
-        <BanList />
+        <div className="cat_img_and_ban_list_container">
+          {catImg && <img className="cat_Img" src={catImg} alt="Random Cat" />}
+          <BanList 
+          catNameList={catNameList} 
+          catOriginList={catOriginList} 
+          removeNameFromList={removeNameFromList}
+          removeOriginFromList={removeOriginFromList}/>
+        </div>
         <div className="cat-data">
         {breedData.length > 0 && <button className="cat-name-button" onClick={updateListofNames}>{breedData[0].name}</button>}
         {breedData.length > 0 && <button className="cat-origin-button" onClick={updateListofOrigins}>{breedData[0].origin}</button>}
