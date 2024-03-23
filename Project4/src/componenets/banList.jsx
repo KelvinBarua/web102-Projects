@@ -5,7 +5,7 @@ const banList = ({catNameList, catOriginList, removeNameFromList, removeOriginFr
   const [nameButtons, setNameButtons] = useState('');
   const [originButtons, setOriginButtons] = useState('');
 
-  useEffect(() => {
+  useEffect(() => { //this useEffect makes it so that buttons can be added to the ban list whenever the user clicks on a breed name or breed origin.
     const generateNameButtons = () => {
       const buttons = catNameList.map((name, index) => (
         <button key={index} className="ban-button" onClick={() => removeNameFromList(name)}>{name}</button>

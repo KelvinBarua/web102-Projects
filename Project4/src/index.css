@@ -50,6 +50,15 @@ body {
   column-gap: 50px;
 }
 
+.ban-button {
+  margin: 10px;
+  transition: 0.1s;
+}
+
+.ban-button:active{
+  transform: scale(1.1);
+}
+
 .cat_Img {
   height: 480px;
   width: 720px;
