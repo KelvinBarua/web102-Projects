@@ -48,12 +48,44 @@ body {
 }
 
 .navbar-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+
   height: 1200px;
   width: 450px;
 
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 25px;
 }
+
+.filters{
+  min-height: min-content;
+  min-width: min-content;
+
+  background-color: rgba(0, 0, 0, 0.65);
+  border-radius: 25px;
+  align-self: center;
+
+  padding: 15px;
+}
+
+.min-price-input{
+  border-radius: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+
+  height: 35px;
+  min-width: min-content;
+
+  font-size: 25px;
+}
+
+.min-price-input::placeholder{
+  font-size: 25px;
+}
+
 
 .data-container{
   height: min-content;

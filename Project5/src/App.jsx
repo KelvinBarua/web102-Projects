@@ -12,10 +12,16 @@ function App() {
 
   const [pageCounts, setPageCounts] = useState([]);
 
+  const [minPrice, setMinPrice] = useState([]);
+
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
   };
+
+  const handleMinPriceInputChange = (e) =>{
+    setMinPrice(e.target.value);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,6 +63,20 @@ function App() {
       <div className="container">
         <div className="navbar-container">
           <h1>Navbar</h1>
+          <div className="filters">
+            <h2>Filters (not yet functional)</h2>
+            <form>
+              <label for='min-price-input'>Min Price: </label>
+              <input
+              type='text'
+              className='min-price-input'
+              id='min-price-input'
+              placeholder='Minimum Price'
+              onChange={handleMinPriceInputChange}
+              value={minPrice}
+              ></input>
+            </form>
+          </div>
         </div>
 
         <div className="data-container">
