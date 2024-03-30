@@ -75,12 +75,13 @@ body {
 
 .stats-container{
   height: min-content;
-  width: 1100px;
+  max-width: max-content;
   background-color: #213547;
 
   align-self: center;
 
   border-radius: 25px;
+  padding: 25px;
 }
 
 .search-input{

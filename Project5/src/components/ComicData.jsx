@@ -12,7 +12,7 @@ const limit = 100;
 const url = `https://gateway.marvel.com:443/v1/public/comics?dateRange=1945-01-01%2C2024-03-28&limit=${limit}&apikey=${API_KEY}&ts=${timestamp}&hash=${hash}&format=comic&formatType=comic`;
 
 
-const ComicData = ({setCount, userInput, dates, setDates}) => {
+const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCounts}) => {
   const [comics, setComics] = useState([]);
   const [comicTitles, setComicTitles] = useState([]);
   const [error, setError] = useState('');
@@ -38,7 +38,9 @@ const ComicData = ({setCount, userInput, dates, setDates}) => {
 
         const dates = comics_data.map(comic => parseInt(comic.dates[1].date.substring(0, 4)));
         setDates(prevDates => [...prevDates, ...dates]);
-        
+
+        const pageCountsFromData = comics_data.map(comic => comic.pageCount);
+        setPageCounts(prevPageCounts => [...prevPageCounts, ...pageCountsFromData]);
         
         titles.forEach(title => { //study this branch later, this pushes all comic titles to the array i created...
           if(!titleTracker.includes(title)){
@@ -72,6 +74,7 @@ const ComicData = ({setCount, userInput, dates, setDates}) => {
 
   return (
     <div className='comic-component'>
+      {console.log(pageCounts)}
       {error && <p>{error}</p>}
       {comics.length > 0 ? (
         <div className='comics-grid'>
