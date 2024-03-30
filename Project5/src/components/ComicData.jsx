@@ -12,7 +12,7 @@ const limit = 100;
 const url = `https://gateway.marvel.com:443/v1/public/comics?dateRange=1945-01-01%2C2024-03-28&limit=${limit}&apikey=${API_KEY}&ts=${timestamp}&hash=${hash}&format=comic&formatType=comic`;
 
 
-const ComicData = ({setCount, userInput}) => {
+const ComicData = ({setCount, userInput, dates, setDates}) => {
   const [comics, setComics] = useState([]);
   const [comicTitles, setComicTitles] = useState([]);
   const [error, setError] = useState('');
@@ -31,10 +31,15 @@ const ComicData = ({setCount, userInput}) => {
             offset: offset,
           }
         });
+
         const comics_data = response.data.data.results.filter(comic => (!titleTracker.includes(comic.title)));
 
         const titles = comics_data.map(comic => comic.title);
 
+        const dates = comics_data.map(comic => parseInt(comic.dates[1].date.substring(0, 4)));
+        setDates(prevDates => [...prevDates, ...dates]);
+        
+        
         titles.forEach(title => { //study this branch later, this pushes all comic titles to the array i created...
           if(!titleTracker.includes(title)){
             titleTracker.push(title);
@@ -44,13 +49,13 @@ const ComicData = ({setCount, userInput}) => {
 
         setComics(prevComics => [...prevComics, ...comics_data]);
         setOffset(prevOffset => prevOffset + limit);
-        console.log(comicTitles);
       } catch (error) {
         setError("Couldn't fetch data :(");
         console.error(error);
       }
     }
     fetchComic();
+    console.log(url);
     for(var i = 0; i < titleTracker.length; i++){
       titleTracker.pop();
     }

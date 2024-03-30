@@ -8,6 +8,8 @@ function App() {
 
   const [searchInput, setSearchInput] = useState('');
 
+  const [dates, setDates] = useState([]);
+
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
@@ -17,6 +19,21 @@ function App() {
     e.preventDefault();
     setSearchInput('');
   }
+
+  const getDateRange = () => {
+    if (dates.length === 0) {
+      return "No date range available";
+    }
+
+    const validDates = dates.filter(date => date > 0 && date < 2025); // Remove any NaN values
+    if (validDates.length === 0) {
+      return "No valid dates available";
+    }
+
+    const earliestDate = Math.min(...validDates);
+    const latestDate = Math.max(...validDates);
+    return `Date Range: ${earliestDate} - ${latestDate}`;
+  };
 
   return (
     <>
@@ -28,7 +45,7 @@ function App() {
         <div className="data-container">
           <div className ="stats-container">
             <h3>Total Comics 📚: {count}</h3>
-            <h3>Comics Date-range 🗓️: </h3>
+            <h3>Comics Year Range 🗓️: {getDateRange()}</h3>
             <form>
               <input
               className='search-input' 
@@ -40,7 +57,7 @@ function App() {
               <button onClick={handleSubmit} type='submit'>Search</button>
             </form>
           </div>
-          <ComicData setCount={setCount} userInput={searchInput}/>
+          <ComicData setCount={setCount} userInput={searchInput} dates={dates} setDates={setDates}/>
         </div>
       </div>
     </>
