@@ -26,11 +26,13 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: min-content;
   min-height: max-content;
   
   background-image: url('./assets/7997344_669.jpg');
   background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
   background-size: cover;
 }
 
@@ -56,15 +58,42 @@ body {
 .data-container{
   height: min-content;
   width: 750px;
+
   margin-right: 20px;
+
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   
 
   background-color: rgba(255, 255, 255, 0.25);
   flex-grow: 1;
   border-radius: 25px;
 
-  padding: 10px;
+  padding: 35px;
+}
+
+.stats-container{
+  height: min-content;
+  width: 1100px;
+  background-color: #213547;
+
+  align-self: center;
+
+  border-radius: 25px;
+}
+
+.search-input{
+  border-radius: 15px;
+  margin-bottom: 15px;
+  height: 35px;
+  width: 450px;
+
+  font-size: 25px;
+}
+
+.search-input::placeholder{
+  font-size: 25px;
 }
 
 .comic-component{
@@ -91,7 +120,7 @@ body {
   max-width: min-content;
   padding: 25px;
 
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.65);
   border-radius: 25px;
 }
 
