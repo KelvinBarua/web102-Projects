@@ -4,7 +4,7 @@ Submitted by: **Kelvin Barua**
 
 This web app: **Marvel comic book library powered by Marvels API.**
 
-Time spent: **6.5** hours spent in total
+Time spent: **7.5** hours spent in total
 
 ## Required Features
 
