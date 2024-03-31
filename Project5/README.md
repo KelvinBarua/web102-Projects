@@ -15,11 +15,11 @@ The following **required** functionality is completed:
 - [X] **The app dashboard includes at least three summary statistics about the data such as**
   - [X] *comic books date range (year), total number of comics on-screen, and smallest page count to largest page count*
 - [X] **A search bar allows the user to search for an item in the fetched data**
-- [ ] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
+- [X] **Multiple different filters (2+) allow the user to filter items in the database by specified categories**
 
 The following **optional** features are implemented:
 
-- [ ] Multiple filters can be applied simultaneously
+- [X] Multiple filters can be applied simultaneously
 - [ ] Filters use different input types such as a text input, a selection, or a slider
 - [ ] The user can enter specific bounds for filter values
 
