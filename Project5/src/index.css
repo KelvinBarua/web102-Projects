@@ -50,11 +50,12 @@ body {
 .navbar-container{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 
 
   height: 1200px;
-  width: 450px;
+  max-width: min-content;
+
+  padding: 25px;
 
   background-color: rgba(255, 255, 255, 0.25);
   border-radius: 25px;
@@ -82,6 +83,17 @@ body {
   font-size: 25px;
 }
 
+.max-price-input {
+  border-radius: 15px;
+  margin-bottom: 15px;
+  padding: 10px;
+
+  height: 35px;
+  min-width: min-content;
+
+  font-size: 25px;
+}
+
 .min-price-input::placeholder{
   font-size: 25px;
 }
@@ -89,7 +101,8 @@ body {
 
 .data-container{
   height: min-content;
-  width: 750px;
+  min-width: 1250px;
+  max-width: min-content;
 
   margin-right: 20px;
 
@@ -150,6 +163,12 @@ body {
 }
 
 .comics-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  row-gap: 15px;
+
   text-align: center;
   min-width: 245px;
   max-width: min-content;
@@ -157,6 +176,17 @@ body {
 
   background-color: rgba(0, 0, 0, 0.65);
   border-radius: 25px;
+}
+
+#comic-price{
+  border: white 2px solid;
+  border-radius: 25px;
+  padding: 15px;
+
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  margin-left: 5px;
 }
 
 #comic-img{

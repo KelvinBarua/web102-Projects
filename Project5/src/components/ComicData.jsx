@@ -12,7 +12,7 @@ const limit = 100;
 const url = `https://gateway.marvel.com:443/v1/public/comics?dateRange=1945-01-01%2C2024-03-28&limit=${limit}&apikey=${API_KEY}&ts=${timestamp}&hash=${hash}&format=comic&formatType=comic`;
 
 
-const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCounts}) => {
+const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCounts, prices, setPrices, minPrice, setMinPrice, maxPrice, setMaxPrice}) => {
   const [comics, setComics] = useState([]);
   const [comicTitles, setComicTitles] = useState([]);
   const [error, setError] = useState('');
@@ -41,6 +41,9 @@ const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCou
 
         const pageCountsFromData = comics_data.map(comic => comic.pageCount);
         setPageCounts(prevPageCounts => [...prevPageCounts, ...pageCountsFromData]);
+
+        const pricesFromData = comics_data.map(comic => comic.prices[0].price);
+        setPrices(prevPrices => [...prevPrices, ...pricesFromData]);
         
         titles.forEach(title => { //study this branch later, this pushes all comic titles to the array i created...
           if(!titleTracker.includes(title)){
@@ -64,17 +67,39 @@ const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCou
   }, []);
 
   useEffect(() => {
-    if(userInput) {
-      const filtered = comics.filter(comic => comic.title.toLowerCase().includes(userInput.toLowerCase()));
+    let filtered = comics;
+  
+    // Filter by user input
+    if (userInput) {
+      filtered = filtered.filter(comic => comic.title.toLowerCase().includes(userInput.toLowerCase()));
+    }
+  
+    // Filter by min price
+    if (minPrice) {
+      filtered = filtered.filter(comic => comic.prices[0].price >= minPrice);
+    }
+  
+    // Filter by max price
+    if (maxPrice) {
+      filtered = filtered.filter(comic => comic.prices[0].price <= maxPrice);
+    }
+  
+    setFilteredComics(filtered);
+  }, [userInput, minPrice, maxPrice, comics]);
+
+
+  useEffect(() => {
+    if(maxPrice) {
+      const filtered = comics.filter(comic => comic.prices[0].price < maxPrice);
       setFilteredComics(filtered);
     } else {
       setFilteredComics(comics);
     }
-  }, [userInput, comics]);
+  }, [maxPrice, comics]);
 
   return (
     <div className='comic-component'>
-      {console.log(pageCounts)}
+      {console.log(prices)}
       {error && <p>{error}</p>}
       {comics.length > 0 ? (
         <div className='comics-grid'>
@@ -83,6 +108,7 @@ const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCou
             <div key={index} className='comics-container'>
               <h3 className='comic-title'>{comic.title}</h3>
               <img id='comic-img' src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} />
+              <p id='comic-price'>Price: ${comic.prices[0].price}</p>
             </div>
           ))}
         </div>
