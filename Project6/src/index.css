@@ -36,6 +36,10 @@ body {
   background-size: cover;
 }
 
+.NotFoundPageBody {
+  height: 100vh;
+}
+
 .container{
   display: flex;
   flex-direction: row;

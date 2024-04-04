@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import md5 from 'md5';
 import titleTracker from './titleTracker';
+import { Link } from 'react-router-dom';
 
 const API_KEY = '74e59ba98ef13b65b7f9463b1922cc5b';
 const PRIVATE_KEY = '575f3182cbf7be8ede606d94df460e7f69246d72';
@@ -105,11 +106,13 @@ const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCou
         <div className='comics-grid'>
           {setCount(titleTracker.length)}
           {filteredComics.map((comic, index) => (
-            <div key={index} className='comics-container'>
-              <h3 className='comic-title'>{comic.title}</h3>
-              <img id='comic-img' src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} />
-              <p id='comic-price'>Price: ${comic.prices[0].price}</p>
-            </div>
+            <Link key={comic.id} to={`/infoPage/${comic.title}`}>
+              <div key={index} className='comics-container'>
+                <h3 className='comic-title'>{comic.title}</h3>
+                <img id='comic-img' src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} />
+                <p id='comic-price'>Price: ${comic.prices[0].price}</p>
+              </div>
+            </Link>
           ))}
         </div>
         ) : (
