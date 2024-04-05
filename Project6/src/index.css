@@ -43,10 +43,15 @@ body {
 .info-page-body{
   display: flex;
   flex-direction: row;
-  align-items:first baseline;
+  align-items: first baseline;
 
   min-height: 100vh;
   max-height: fit-content;
+}
+
+.infoPageComicIMG{
+  border: 7px solid black;
+  border-radius: 25px;
 }
 
 .container{

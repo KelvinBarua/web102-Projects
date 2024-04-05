@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     errorElement: <NotFound />,
   },
   {
-    path: '/infoPage/:pageId',
+    path: '/:pageId',
     element: <InfoPage />,
     errorElement: <NotFound />,
   }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import md5 from 'md5';
 import titleTracker from './titleTracker';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const API_KEY = '74e59ba98ef13b65b7f9463b1922cc5b';
 const PRIVATE_KEY = '575f3182cbf7be8ede606d94df460e7f69246d72';
@@ -10,7 +11,7 @@ const timestamp = (new Date().getTime()) / 1000;
 const hash = md5(timestamp + PRIVATE_KEY + API_KEY);
 const limit = 100;
 
-const url = `https://gateway.marvel.com:443/v1/public/comics?dateRange=1945-01-01%2C2024-03-28&limit=${limit}&apikey=${API_KEY}&ts=${timestamp}&hash=${hash}&format=comic&formatType=comic`;
+const url = `https://gateway.marvel.com:443/v1/public/comics?limit=${limit}&apikey=${API_KEY}&ts=${timestamp}&hash=${hash}&format=comic&formatType=comic`;
 
 
 const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCounts, prices, setPrices, minPrice, setMinPrice, maxPrice, setMaxPrice}) => {
@@ -23,17 +24,17 @@ const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCou
   useEffect(() => {
     const fetchComic = async () =>{
       try {
-        const response = await axios.get(`https://gateway.marvel.com:443/v1/public/comics?`, {
+        const response = await axios.get(`https://gateway.marvel.com:443/v1/public/comics?dateRange=1930-01-01%2C2024-01-01`, {
           params: {
             hash:  hash,
             ts: timestamp,
             apikey: API_KEY,
-            limit: limit,
             offset: offset,
+            limit: 100,
           }
         });
 
-        const comics_data = response.data.data.results.filter(comic => (!titleTracker.includes(comic.title)));
+        const comics_data = response.data.data.results.filter(comic => (!titleTracker.includes(comic.title)) && !(comic.description == null || comic.description == "" || comic.description == "#N/A") && !(comic.title.includes("(Variant)")));
 
         const titles = comics_data.map(comic => comic.title);
 
@@ -54,18 +55,20 @@ const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCou
         });
 
         setComics(prevComics => [...prevComics, ...comics_data]);
-        setOffset(prevOffset => prevOffset + limit);
       } catch (error) {
         setError("Couldn't fetch data :(");
         console.error(error);
       }
     }
-    fetchComic();
+    if(offset <= 100 + 3){
+      fetchComic();
+      setOffset(prevOffset => prevOffset + 50);
+    }
     console.log(url);
     for(var i = 0; i < titleTracker.length; i++){
       titleTracker.pop();
     }
-  }, []);
+  }, [offset]);
 
   useEffect(() => {
     let filtered = comics;
@@ -104,9 +107,11 @@ const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCou
       {error && <p>{error}</p>}
       {comics.length > 0 ? (
         <div className='comics-grid'>
-          {setCount(titleTracker.length)}
+          {setCount(filteredComics.length)}
           {filteredComics.map((comic, index) => (
-            <Link key={comic.id} to={`/infoPage/${comic.title}`}>
+            <Link key={comic.id} to={`${comic.id}`} state={{ title: `${comic.title}`, price: `${comic.prices[0].price}`, comic_cover: `${comic.thumbnail.path}.${comic.thumbnail.extension}`, description: `${comic.description}`,
+            }}>
+              {console.log(comic.description)}
               <div key={index} className='comics-container'>
                 <h3 className='comic-title'>{comic.title}</h3>
                 <img id='comic-img' src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} />
