@@ -95,6 +95,7 @@ function App() {
         minPrice={minPrice} 
         handelMaxPriceInputChange={handelMaxPriceInputChange} 
         maxPrice={maxPrice}
+        showForm={true}
         />
 
         <div className="data-container">

@@ -10,13 +10,13 @@ function infoPage() {
   return (
     <body className="info-page-body">
       <div className="info-page-container">
-        <Navbar />
+        <Navbar showForm = {false}/>
         <div className="info-container">
           <h1>{state.title}</h1>
           <img className="infoPageComicIMG" src={state.comic_cover} />
-          <h3>Comic Price: ${state.price}</h3>
-          <p>Comic Description: {state.description}</p>
-          <Link to="/"><button>Go Back Home</button></Link>
+          <h3 className="infoPageComicPrice">Comic Price: ${state.price}</h3>
+          <p className="comic-description">{state.description}</p>
+          <Link to="/"><button className="infoPageHomeBtn">Go Back Home</button></Link>
         </div>
         
       </div>
