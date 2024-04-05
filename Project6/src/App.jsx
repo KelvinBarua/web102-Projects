@@ -2,6 +2,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import './App.css'
 import ComicData from './components/ComicData'
+import Navbar from './components/navbar'
 
 function App() {
   const [count, setCount] = useState(0);
@@ -11,8 +12,6 @@ function App() {
   const [prices, setPrices] = useState([]);
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
-  
-
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
@@ -90,33 +89,13 @@ function App() {
   return (
     <>
       <div className="container">
-        <div className="navbar-container">
-          <h1>Navbar</h1>
-          <div className="filters">
-            <h2>Filters</h2>
-            <form>
-              <label for='min-price-input'>Min Price: </label>
-              <input
-              type='text'
-              className='min-price-input'
-              id='min-price-input'
-              placeholder='Minimum Price'
-              onChange={handleMinPriceInputChange}
-              value={minPrice}
-              ></input>
-
-              <label for='max-price-input'>Max Price: </label>
-              <input
-              type='text'
-              className='max-price-input'
-              id='max-price-input'
-              placeholder='Maximum Price'
-              onChange={handelMaxPriceInputChange}
-              value={maxPrice}
-              ></input>
-            </form>
-          </div>
-        </div>
+        
+        <Navbar 
+        handleMinPriceInputChange={handleMinPriceInputChange} 
+        minPrice={minPrice} 
+        handelMaxPriceInputChange={handelMaxPriceInputChange} 
+        maxPrice={maxPrice}
+        />
 
         <div className="data-container">
           <div className ="stats-container">
