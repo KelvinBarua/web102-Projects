@@ -8,7 +8,9 @@ const Navbar = (props) => {
     <div className="navbar-container">
         <h1>Marvel Comics</h1>
         <Link className="nav-home-button" to="/">Home 🏠</Link>
-        <Link className="nav-home-button" >Comic Statistics 📊</Link>
+        {props.showStatsLink && 
+          <Link className="nav-home-button" to="/StatsPage" state={{data: props.data}}>Comic Statistics 📊</Link>
+        }
         {props.showForm && 
           <div className="filters">
           <h2>Filters</h2>

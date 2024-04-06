@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import './App.css'
 import ComicData from './components/ComicData'
@@ -12,6 +12,8 @@ function App() {
   const [prices, setPrices] = useState([]);
   const [minPrice, setMinPrice] = useState('');
   const [maxPrice, setMaxPrice] = useState('');
+
+  const[chartData, setChartData] = useState([]);
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
@@ -86,16 +88,28 @@ function App() {
     return `${smallestPageCount} - ${largestPageCount}`;
   }
 
+  useEffect(() => { //populates the chart data, which will be an array of objects that have date-prices as the key-value pairs. 
+    if(dates.length === prices.length) {
+      const combinedData = dates.map((date, index) => ({
+        date: date,
+        prices: prices[index],
+      }));
+      setChartData(combinedData);
+    }
+    console.log(chartData);
+  }, [dates, prices])
+
   return (
     <>
       <div className="container">
-        
         <Navbar 
         handleMinPriceInputChange={handleMinPriceInputChange} 
         minPrice={minPrice} 
         handelMaxPriceInputChange={handelMaxPriceInputChange} 
         maxPrice={maxPrice}
         showForm={true}
+        showStatsLink={true}
+        data={chartData}
         />
 
         <div className="data-container">

@@ -103,7 +103,6 @@ const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCou
 
   return (
     <div className='comic-component'>
-      {console.log(prices)}
       {error && <p>{error}</p>}
       {comics.length > 0 ? (
         <div className='comics-grid'>
@@ -111,7 +110,6 @@ const ComicData = ({setCount, userInput, dates, setDates, pageCounts, setPageCou
           {filteredComics.map((comic, index) => (
             <Link key={comic.id} to={`${comic.id}`} state={{ title: `${comic.title}`, price: `${comic.prices[0].price}`, comic_cover: `${comic.thumbnail.path}.${comic.thumbnail.extension}`, description: `${comic.description}`,
             }}>
-              {console.log(comic.description)}
               <div key={index} className='comics-container'>
                 <h3 className='comic-title'>{comic.title}</h3>
                 <img id='comic-img' src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`} />
