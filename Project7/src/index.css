@@ -28,6 +28,45 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+
+  background-image: url('./assets/The-among-us-space-background-with-no-people-in-it.jpg');
+  background-position: -250px;
+}
+
+.navbar{
+  background-color: rgba(173, 161, 161, 0.244);
+  width: 150px;
+  height: 500px;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+
+  min-height: 100vh;
+  max-height: min-content;
+
+  padding: 25px;
+}
+
+#HomeBtn{
+  height: 150px;
+  width: 150px;
+  transition: 0.2s;
+}
+
+#HomeBtn:hover{
+  filter: drop-shadow(0 4px 8px rgb(255, 255, 255));
+  transition: 0.2s;
+}
+
+#HomeBtn:active{
+  filter: drop-shadow(0 4px 8px rgb(255, 255, 255));
+  transform: scale(0.9);
+}
+
+#HomeLink{
+  height: 60px;
 }
 
 h1 {
