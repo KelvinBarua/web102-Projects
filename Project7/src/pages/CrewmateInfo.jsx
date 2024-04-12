@@ -6,6 +6,7 @@ import Red from "../assets/crewmates/redCrew.png";
 import Blue from "../assets/crewmates/blueCrew.png";
 import Green from "../assets/crewmates/greenCrew.png";
 import UpdateForm from "../components/UpdateForm";
+import Modal from "../components/Modal";
 
 import { supabase } from "../supabaseClient";
 
@@ -45,6 +46,16 @@ function CrewmateInfo() {
     setColor("");
   };
 
+  const deleteCrewmate = async (toggleModal) => {
+  
+    await supabase
+      .from('Crewmates')
+      .delete()
+      .eq('id', crewmateID); 
+    
+      toggleModal();
+  }
+
   return (
     <div className="container">
       <Navbar />
@@ -61,6 +72,7 @@ function CrewmateInfo() {
 
         <h2>Update Crewmate</h2>
         <UpdateForm crewmateName={crewmateName} setName={setName} crewmateSpeed={crewmateSpeed} setSpeed={setSpeed} crewmateColor={crewmateColor} setColor={setColor} crewmateID={crewmateID} setCrewmateID={setCrewmateID} updateCrewmate={updateCrewmate} />
+        <Modal deleteCrewmate={deleteCrewmate}/>
         <Link to="/crewmateGalleryPage">⬅️ Go Back</Link>
       </div>
     </div>
