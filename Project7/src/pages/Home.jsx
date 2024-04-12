@@ -1,8 +1,17 @@
 import { useState } from 'react'
 import Navbar from '../components/navbar';
+import { supabase } from '../supabaseClient';
 
 function Home() {
-  const [count, setCount] = useState(0)
+  const [crewmateName, setName] = useState('');
+  const [crewmateSpeed, setSpeed] = useState('');
+  
+  // const createCrewmate = async (event) =>{
+  //   event.preventDefault();
+
+  //   await supabase
+  //     .from('Crewmates')
+  // }
 
   return (
     <div className="container">
@@ -14,7 +23,11 @@ function Home() {
         <div className="crewmateModArea">
           <form id="create-form">
             <label for="name-field">Crewmate Name: </label>
-            <input id="name-field" type="text"></input>
+            <input 
+            id="name-field" 
+            type="text"
+            onChange={(e) => {setName(e.target.value)}}></input>
+            <button>Create Crewmate!</button>
           </form>
         </div>
       </div>
