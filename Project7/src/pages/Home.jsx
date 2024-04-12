@@ -6,12 +6,14 @@ function Home() {
   const [crewmateName, setName] = useState('');
   const [crewmateSpeed, setSpeed] = useState('');
   
-  // const createCrewmate = async (event) =>{
-  //   event.preventDefault();
+  const createCrewmate = async (event) =>{
+    event.preventDefault();
 
-  //   await supabase
-  //     .from('Crewmates')
-  // }
+    await supabase
+      .from('Crewmates')
+      .insert({Name: crewmateName, Speed: crewmateSpeed})
+      .select();
+  }
 
   return (
     <div className="container">
