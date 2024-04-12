@@ -33,11 +33,11 @@ function GalleryPage() {
         <h1 className="main-title">Your Crewmates 👨‍👩‍👧‍👦</h1>
         <div className="gallery">
           {crewmates.map((crewmate, index) => (
-            <Link className="crewmateCard" to={`/crewmateGalleryPage/${crewmate.id}`} state={{ Name: `${crewmate.Name}`}}>
+            <Link className="crewmateCard" to={`/crewmateGalleryPage/${crewmate.id}`} state={{ Name: `${crewmate.Name}`, Speed: `${crewmate.Speed}`, Color: `${crewmate.Color}`, id: `${crewmate.id}` }}>
             <div key={index}>
-              {crewmate.Color == "Red" && <img src={Red} id="crewmateIMG" />}
-              {crewmate.Color == "Blue" && <img src={Blue} id="crewmateIMG"/>}
-              {crewmate.Color == "Green" && <img src={Green} id="crewmateIMG"/>}
+              {crewmate.Color == "Red" && <img alt="Red crewmate" src={Red} id="crewmateIMG" />}
+              {crewmate.Color == "Blue" && <img alt="Blue crewmate" src={Blue} id="crewmateIMG"/>}
+              {crewmate.Color == "Green" && <img alt="Green crewmate" src={Green} id="crewmateIMG"/>}
               <h3>{crewmate.Name}</h3>
               <p>Speed: {crewmate.Speed}</p>
               <p>Color: {crewmate.Color}</p>

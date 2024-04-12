@@ -118,11 +118,17 @@ body {
 #name-field{
   border-radius: 15px;
   background-color: rgb(190, 190, 190);
+  color: black;
+  font-size: 25px;
+  padding: 15px;
 }
 
 #speed-field{
   border-radius: 15px;
   background-color: rgb(190, 190, 190);
+  color: black;
+  font-size: 25px;
+  padding: 15px;
 }
 
 .color-select-area{
@@ -184,6 +190,14 @@ body {
 #crewmateIMG{
   height: 250px;
   filter: drop-shadow(0 2px 11px rgb(255, 255, 255));
+}
+
+#detailed-view-crewmateIMG{
+  height: 250px;
+  width: 250px;
+  filter: drop-shadow(0 2px 11px rgb(255, 255, 255));
+
+  align-self: center;
 }
 
 h1 {
