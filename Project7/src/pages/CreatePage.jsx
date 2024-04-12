@@ -17,9 +17,10 @@ function CreatePage() {
         .insert([
           { Name: crewmateName, Speed: Number(crewmateSpeed), Color: crewmateColor }
         ]);
-  
+      
       if (error) throw error;
-  
+      alert("Crewmate created!");
+
       // Reset the form fields after successful insertion
       setName('');
       setSpeed('');

@@ -164,12 +164,12 @@ body {
 
 .crewmateCard{
   flex: 1 1 48%;
-  max-width: 48%;
   font-size: 25px;
+  min-width: 350px;
 
   border: 2px white solid;
   border-radius: 25px;
-  width: 350px;
+  max-width: fit-content;
 
   color: white;
   transition: 0.2s;
@@ -242,6 +242,20 @@ body {
   min-width: 300px;
 
   border-radius: 25px;
+}
+
+.modal-selections{
+  display: flex;
+  justify-content: space-around;
+}
+
+.choice-yes{
+  transition: 0.2s;
+}
+
+.choice-yes:hover{
+  background-color: red;
+  border-color: red;
 }
 
 h1 {
