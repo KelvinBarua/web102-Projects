@@ -50,16 +50,16 @@ body {
   padding: 50px;
 }
 
-
 .navbar{
   background-color: rgba(173, 161, 161, 0.244);
-  width: 150px;
-  height: 500px;
+  min-width: 150px;
+  max-width: fit-content;
+  min-height: fit-content;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  row-gap: 120px;
+  row-gap: 130px;
 
   text-align: center;
 
@@ -70,23 +70,106 @@ body {
 }
 
 #NavBtn{
-  height: 150px;
-  width: 150px;
+  height: 185px;
+  width: 185px;
   transition: 0.2s;
 }
 
 #NavBtn:hover{
-  filter: drop-shadow(0 4px 8px rgb(255, 255, 255));
+  filter: drop-shadow(0 2px 8px rgb(255, 255, 255));
   transition: 0.2s;
 }
 
 #NavBtn:active{
-  filter: drop-shadow(0 4px 8px rgb(255, 255, 255));
+  filter: drop-shadow(0 2px 8px rgb(255, 255, 255));
   transform: scale(0.9);
 }
 
 #HomeLink{
   height: 60px;
+}
+
+#CreateLink{
+  height: 60px;
+}
+
+#GalleryLink{
+  height: 60px;
+}
+
+.crewmateModArea{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  padding: 5px;
+}
+
+#create-form{
+  display: flex;
+  flex-direction: column;
+
+  font-size: 25px;
+  border: solid 2px white;
+  padding: 25px;
+  border-radius: 25px;
+}
+
+#name-field{
+  border-radius: 15px;
+  background-color: rgb(190, 190, 190);
+}
+
+#speed-field{
+  border-radius: 15px;
+  background-color: rgb(190, 190, 190);
+}
+
+.color-select-area{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 5px;
+  border: 2px white solid;
+  border-radius: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.ColorSelectTxt{
+  margin: 0px;
+  margin-bottom: 5px;
+}
+
+.gallery{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  column-gap: 32px;
+  row-gap: 25px;
+
+  min-width: min-content;
+  margin: 0px auto;
+
+  padding: 15px;
+}
+
+.crewmateCard{
+  flex: 1 1 48%;
+  max-width: 48%;
+  font-size: 25px;
+
+  border: 2px white solid;
+  border-radius: 25px;
+  width: 350px;
+
+}
+
+#crewmateIMG{
+  height: 250px;
+  filter: drop-shadow(0 2px 11px rgb(255, 255, 255));
 }
 
 h1 {
