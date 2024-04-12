@@ -7,6 +7,7 @@ import './index.css'
 import {RouterProvider, createBrowserRouter} from 'react-router-dom';
 import CreatePage from './pages/CreatePage.jsx'
 import GalleryPage from './pages/GalleryPage.jsx'
+import CrewmateInfo from './pages/CrewmateInfo.jsx'
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
   {
     path: '/crewmateGalleryPage',
     element: <GalleryPage />,
+    errorElement: <PageNotFound />,
+  },
+  {
+    path: '/crewmateGalleryPage/:pageId',
+    element: <CrewmateInfo />,
     errorElement: <PageNotFound />,
   },
 ])

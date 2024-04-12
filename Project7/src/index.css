@@ -52,7 +52,7 @@ body {
 
 .navbar{
   background-color: rgba(173, 161, 161, 0.244);
-  min-width: 150px;
+  min-width: min-content;
   max-width: fit-content;
   min-height: fit-content;
 
@@ -165,6 +165,20 @@ body {
   border-radius: 25px;
   width: 350px;
 
+  color: white;
+  transition: 0.2s;
+}
+
+.crewmateCard:hover{
+  color: white;
+  box-shadow: 0px 0px 15px 5px white;
+  transform: scale(1.03);
+}
+
+.crewmateCard:active{
+  color: white;
+  box-shadow: 0px 0px 15px 5px white;
+  transform: scale(0.9);
 }
 
 #crewmateIMG{

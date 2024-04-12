@@ -5,6 +5,7 @@ import { supabase } from "../supabaseClient";
 import Red from "../assets/crewmates/redCrew.png"
 import Blue from "../assets/crewmates/blueCrew.png"
 import Green from "../assets/crewmates/greenCrew.png"
+import { Link } from "react-router-dom";
 
 function GalleryPage() {
   const [crewmates, setCrewmates] = useState([]);
@@ -32,7 +33,8 @@ function GalleryPage() {
         <h1 className="main-title">Your Crewmates 👨‍👩‍👧‍👦</h1>
         <div className="gallery">
           {crewmates.map((crewmate, index) => (
-            <div className="crewmateCard" key={index}>
+            <Link className="crewmateCard" to={`/crewmateGalleryPage/${crewmate.id}`} state={{ Name: `${crewmate.Name}`}}>
+            <div key={index}>
               {crewmate.Color == "Red" && <img src={Red} id="crewmateIMG" />}
               {crewmate.Color == "Blue" && <img src={Blue} id="crewmateIMG"/>}
               {crewmate.Color == "Green" && <img src={Green} id="crewmateIMG"/>}
@@ -40,11 +42,12 @@ function GalleryPage() {
               <p>Speed: {crewmate.Speed}</p>
               <p>Color: {crewmate.Color}</p>
             </div>
+            </Link>
           ))}
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default GalleryPage;
