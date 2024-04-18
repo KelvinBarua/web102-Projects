@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 
 //pages
 import App from './App.jsx'
+import CreatePost from './pages/CreatePost.jsx'
 import PageNotFound from './pages/PageNotFound.jsx'
 
 //css
@@ -15,6 +16,11 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    errorElement: <PageNotFound />
+  },
+  {
+    path: '/createPost',
+    element: <CreatePost />,
     errorElement: <PageNotFound />
   }
 ])
