@@ -10,8 +10,9 @@ function CreatePost(){
 
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState("");
+  const [postId, setPostId] = useState(null);
 
-  const createCrewmate = async (event) => {
+  const createPost = async (event) => {
     event.preventDefault();  
     
     try {
@@ -22,7 +23,7 @@ function CreatePost(){
         ]);
       
       if (error) throw error;
-      alert("TTENTION! Your unique id for this post is: . Use this to edit your post. ");
+      alert("Post created! 👍")
 
       // Reset the form fields after successful insertion
       setPostTitle('');
@@ -37,7 +38,7 @@ function CreatePost(){
     <>
       <div className="CreatePostContainer">
         <Navbar />
-        <CreateForm />
+        <CreateForm postTitle={postTitle} setPostTitle={setPostTitle} postBody={postBody} setPostBody={setPostBody} createPost={createPost}/>
       </div>
     </>
   )

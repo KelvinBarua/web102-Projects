@@ -23,6 +23,12 @@ a:hover {
 }
 
 .container{
+  display: flex;
+  flex-direction: column;
+  
+  row-gap: 15px;
+  align-items: center;
+
   min-width: 100vw;
   min-height: 100vh;
 }
@@ -45,6 +51,15 @@ a:hover {
 .nav-btns{
   display: flex;
   flex-direction: row;
+}
+
+.posts-area{
+  background-color: rgba(1, 25, 209, 0.477);
+  min-width: min-content;
+  max-width: fit-content;
+
+  padding: 25px;
+  border-radius: 25px;
 }
 
 #nav-home-btn{

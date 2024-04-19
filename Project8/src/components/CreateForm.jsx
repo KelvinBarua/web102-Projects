@@ -1,8 +1,8 @@
-const CreateForm = ({postTitle, setPostTitle, postBody, setPostBody}) =>{
+const CreateForm = ({postTitle, setPostTitle, postBody, setPostBody, createPost}) =>{
   return (
     <div className="createFormComponent">
       <form className="createForm">
-        <lablel for="title-field">Post Title: </lablel>
+        <label for="title-field">Post Title: </label>
         <input 
         id="title-field"
         type="text" 
@@ -12,7 +12,7 @@ const CreateForm = ({postTitle, setPostTitle, postBody, setPostBody}) =>{
         }}>
         </input>
 
-        <lablel for="text-field">Post Body: </lablel>
+        <label for="text-field">Post Body: </label>
         <textarea
           id="text-field"
           value={postBody}
@@ -22,7 +22,7 @@ const CreateForm = ({postTitle, setPostTitle, postBody, setPostBody}) =>{
           rows={5} // Set an initial number of rows
         />
 
-        <button id="create-post-button" type="submit">Create Post ✍️</button>
+        <button id="create-post-button" type="submit" onClick={createPost}>Create Post ✍️</button>
       </form>
     </div>
   )
