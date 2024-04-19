@@ -32,6 +32,8 @@ a:hover {
   align-items: center;
   flex-direction: row;
 
+  column-gap: 35px;
+
   background-color: rgba(1, 25, 209, 0.477);
 
   padding: 15px;
@@ -51,12 +53,73 @@ a:hover {
 }
 
 #nav-home-btn:hover{
-  box-shadow: 0px 0px 20px 5px white;
+  box-shadow: 0px 0px 15px 3px white;
   transform: scale(1.1);
 }
 
 #nav-home-btn:active{
   transform: scale(0.9);
+}
+
+.CreatePostContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.createFormComponent{
+  display: flex;
+  flex-direction: column;
+
+  background-color: white;
+  max-width: fit-content;
+
+  padding: 15px;
+
+  border: 10px solid rgba(1, 25, 209, 0.477);
+  border-radius: 25px;
+  margin-top: 15px;
+  align-self: center;
+
+  color: black;
+}
+
+.createForm{
+  display: flex;
+  flex-direction: column;
+}
+
+#title-field{
+  height: 45px;
+  border-radius: 25px;
+
+  margin-bottom: 25px;
+  font-size: 25px;
+  padding: 15px;
+}
+
+#text-field{
+  height: 250px;
+  min-width: 53vw;
+  
+  font-size: 25px;
+  resize: none;
+
+  border-radius: 25px;
+  padding: 15px;
+
+  vertical-align: top;
+  text-align: start;
+
+  margin-bottom: 15px;
+}
+
+#create-post-button{
+  align-self: center;
+  width: 15rem;
 }
 
 body {
