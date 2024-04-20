@@ -10,7 +10,6 @@ function CreatePost(){
 
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState("");
-  const [postId, setPostId] = useState(null);
 
   const createPost = async (event) => {
     event.preventDefault();  

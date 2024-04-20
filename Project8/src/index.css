@@ -30,7 +30,10 @@ a:hover {
   align-items: center;
 
   min-width: 100vw;
+  max-width: fit-content;
+
   min-height: 100vh;
+  max-height: fit-content;
 }
 
 .navbar{
@@ -42,10 +45,10 @@ a:hover {
 
   background-color: rgba(1, 25, 209, 0.477);
 
+  border: white 5px solid;
   padding: 15px;
 
-  max-width: min-content;
-  min-width: 100vw;
+  min-width: 97.5%;
 }
 
 .nav-btns{
@@ -54,13 +57,49 @@ a:hover {
 }
 
 .posts-area{
+  display: flex;
+  flex-direction: column;
+  row-gap: 25px;
+
+  align-items: center;
+
   background-color: rgba(1, 25, 209, 0.477);
-  min-width: min-content;
-  max-width: fit-content;
+  min-width: auto;
+
+  max-height: 65vh;
 
   padding: 25px;
   border-radius: 25px;
+  border: white 5px solid;
+
+  overflow-y: auto;
+
+  position: relative
 }
+
+.posts-area::-webkit-scrollbar{
+  width: 5px; /* Adjust width to give 'padding' effect */
+  background-color: rgba(0,0,0,0); /* Optional: make track transparent */
+  border-radius: 25px;
+  border: 2px solid transparent; /* Create a faux padding around the thumb */
+  background-clip: content-box; /* This makes the border act like 'padding' */
+}
+
+.posts-area::-webkit-scrollbar-thumb{
+  background-color: white;
+  border-radius: 25px;
+}
+
+.post{
+  background-color: rgb(20, 2, 109);
+  color: rgb(255, 255, 255);
+
+  padding: 15px;
+  width: 1500px;
+
+  border-radius: 25px;
+}
+
 
 #nav-home-btn{
   transition: 0.2s;
@@ -146,7 +185,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: min-content;
+  max-width: fit-content;
   min-height: 100vh;
 }
 

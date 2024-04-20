@@ -10,6 +10,9 @@ import { supabase } from './supabaseClient'
 
 function App() {
   const [posts, setPosts] = useState([]);
+  const [dates, setDates] = useState([]);
+
+  const [searchInput, setSearchInput] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -20,6 +23,13 @@ function App() {
       if (error) {
         console.log("Error fetching data:", error);
       } else {
+        const formattedDates = data.map(post => {
+          const date = new Date(post.created_at);
+          const formattedDate = date.toLocaleDateString('en-US');
+          const formattedTime = date.toLocaleTimeString('en-US');
+          return `${formattedDate} ${formattedTime}`;
+        });
+        setDates(formattedDates);
         setPosts(data);
       }
     };
@@ -37,8 +47,10 @@ function App() {
         {posts.length > 0 ? (
           posts.map((post, index) => (
             <div className="post" key={index}>
-              <h2>{post.title}</h2>
-              <p>{post.post_body}</p>
+              <h1 id="post-title">{post.title}</h1>
+              <h2 id="post-body">{post.post_body}</h2>
+              <p>Post created at: {dates[index]}</p>
+              <button>Edit Post</button>
             </div>
           ))
         ) : (
