@@ -46,12 +46,13 @@ function App() {
       <div className='posts-area'>
         {posts.length > 0 ? (
           posts.map((post, index) => (
-            <div className="post" key={index}>
-              <h1 id="post-title">{post.title}</h1>
-              <h2 id="post-body">{post.post_body}</h2>
-              <p>Post created at: {dates[index]}</p>
-              <button>Edit Post</button>
-            </div>
+            <Link to={`/${post.id}`} state={{ Title: `${post.title}`, Body: `${post.post_body}`, id: `${post.id}` }}>
+              <div className="post" key={index}>
+                <h1 id="post-title">{post.title}</h1>
+                <h2 id="post-body">{post.post_body}</h2>
+                <p>Post created at: {dates[index]}</p>
+              </div>
+            </Link>
           ))
         ) : (
           <h1>No posts here 😔</h1>
