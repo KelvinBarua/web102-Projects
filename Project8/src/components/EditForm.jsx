@@ -1,7 +1,7 @@
 const EditForm = ({postTitle, setPostTitle, postBody, setPostBody, updatePost}) =>{
   return (
     <div className="createFormComponent">
-      <form className="createForm">
+      <form className="createForm" onSubmit={updatePost}>
         <label for="title-field">Post Title: </label>
         <input 
         id="title-field"

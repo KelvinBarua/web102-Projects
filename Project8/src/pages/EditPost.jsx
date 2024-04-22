@@ -9,13 +9,11 @@ import { supabase } from "../supabaseClient";
 
 function EditPost(){
   let { state } = useLocation();
-  let { navigate } = useNavigate();
+  const navigate = useNavigate();
 
   const [postTitle, setPostTitle] = useState(state ? state.title : '');
   const [postBody, setPostBody] = useState(state ? state.body : "");
 
-  console.log(postTitle);
-  
   const [postID, setPostID] = useState(state.id);
 
   const updatePost = async (event) => {
@@ -27,6 +25,7 @@ function EditPost(){
     setPostTitle('');
     setPostBody("");
 
+    alert("Post updated! Going back home...");
     navigate("/");
   };
 
