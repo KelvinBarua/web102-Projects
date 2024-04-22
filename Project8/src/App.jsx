@@ -1,18 +1,17 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import './App.css'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { useState, useEffect } from 'react';
+import './App.css';
+import { Link } from 'react-router-dom';
 
 //components
-import Navbar from './components/Navbar'
+import Navbar from './components/Navbar';
 
-import { supabase } from './supabaseClient'
+import { supabase } from './supabaseClient';
 
 function App() {
   const [posts, setPosts] = useState([]);
   const [dates, setDates] = useState([]);
-
-  const [searchInput, setSearchInput] = useState([]);
+  const [postUpvotes, setPostUpvotes] = useState({});
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -31,11 +30,42 @@ function App() {
         });
         setDates(formattedDates);
         setPosts(data);
+        
+        const initialUpvotes = {};
+        data.forEach(post => {
+          initialUpvotes[post.id] = post.upvotes || 0;
+        });
+        setPostUpvotes(initialUpvotes);
       }
     };
 
     fetchPosts();
-  }, [posts]);
+  }, []);
+
+  const updateUpvotes = async (postID, newUpvotes) => {
+    await supabase
+      .from("Posts")
+      .update({ upvotes: newUpvotes })
+      .eq("id", postID);
+  };
+
+  const incrementUpvotes = (postID) => {
+    const newUpvotes = postUpvotes[postID] + 1;
+    setPostUpvotes(prevUpvotes => ({
+      ...prevUpvotes,
+      [postID]: newUpvotes
+    }));
+    updateUpvotes(postID, newUpvotes);
+  };
+
+  const decrementUpvotes = (postID) => {
+    const newUpvotes = postUpvotes[postID] - 1;
+    setPostUpvotes(prevUpvotes => ({
+      ...prevUpvotes,
+      [postID]: newUpvotes
+    }));
+    updateUpvotes(postID, newUpvotes);
+  };
 
   return (
     <div className='container'>
@@ -46,20 +76,27 @@ function App() {
       <div className='posts-area'>
         {posts.length > 0 ? (
           posts.map((post, index) => (
-            <Link to={`/${post.id}`} state={{ Title: `${post.title}`, Body: `${post.post_body}`, id: `${post.id}` }}>
-              <div className="post" key={index}>
-                <h1 id="post-title">{post.title}</h1>
-                <h2 id="post-body">{post.post_body}</h2>
-                <p>Post created at: {dates[index]}</p>
+            <div className="post" key={index}>
+              <Link to={`/${post.id}`} state={{ Title: `${post.title}`, Body: `${post.post_body}`, id: `${post.id}` }}>
+                <div className="post-content">
+                  <h1 id="post-title">{post.title}</h1>
+                  <h2 id="post-body">{post.post_body}</h2>
+                  <p>Post created at: {dates[index]}</p>
+                </div>
+              </Link>
+              <div className="upvote_btns">
+                <button id="upvote-btn" onClick={() => incrementUpvotes(post.id)}>Upvote 👍</button>
+                <p>{postUpvotes[post.id]}</p>
+                <button id="downvote-btn" onClick={() => decrementUpvotes(post.id)}>Downvote 👎</button>
               </div>
-            </Link>
+            </div>
           ))
         ) : (
           <h1>No posts here 😔</h1>
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

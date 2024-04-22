@@ -12,7 +12,7 @@ function PostInfo(){
     <div className="container">
       <Navbar />
       <div className="posts-area">
-        <div className="post">
+        <div className="post-content">
           <h1>{state.Title}</h1>
           <p>{state.Body}</p>
           <Link to={`/${postID}/editPost`} state={{ id: `${postID}`, title: `${state.Title}`, body: `${state.Body}` }}><button>Edit Post ✍️</button></Link>
