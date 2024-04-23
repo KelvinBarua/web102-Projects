@@ -1,22 +1,111 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { useLocation } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 
 import Navbar from "../components/Navbar"
+import Modal from "../components/Modal";
 
-function PostInfo(){
+import { supabase } from "../supabaseClient";
+
+function PostInfo() {
   let { state } = useLocation();
   const [postID, setPostID] = useState(state.id);
+
+  const [postUpvotes, setPostUpvotes] = useState({});
+  const [postDownvotes, setPostDownvotes] = useState({});
+
+  const [post, setPost] = useState(null);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data, error } = await supabase
+        .from('Posts')
+        .select();
+      
+      if (error) {
+        console.log("Error fetching data:", error);
+      } else {
+        const filtered = data.filter((post) => post.id == postID);
+        setPost(filtered.length > 0 ? filtered[0] : null);
+
+        const initialUpvotes = {};
+        const initialDownvotes = {};
+        data.forEach(post => {
+          initialUpvotes[post.id] = post.upvotes || 0;
+          initialDownvotes[post.id] = post.downvotes || 0;
+        });
+        setPostUpvotes(initialUpvotes);
+        setPostDownvotes(initialDownvotes);
+      }
+    };
+
+    fetchPosts();
+  }, [postID]);
+
+
+  const updateUpvotes = async (postID, newUpvotes) => {
+    await supabase
+      .from("Posts")
+      .update({ upvotes: newUpvotes })
+      .eq("id", postID);
+  };
+
+  const updateDownvotes = async (postID, newDownvotes) => {
+    await supabase
+      .from("Posts")
+      .update({ downvotes: newDownvotes })
+      .eq("id", postID);
+  };
+
+  const incrementUpvotes = (postID) => {
+    const newUpvotes = postUpvotes[postID] + 1;
+    setPostUpvotes(prevUpvotes => ({
+      ...prevUpvotes,
+      [postID]: newUpvotes
+    }));
+    updateUpvotes(postID, newUpvotes);
+  };
+
+  const incrementDownvotes = (postID) => {
+    const newDownvotes = postDownvotes[postID] + 1;
+    setPostDownvotes(prevDownvotes => ({
+      ...prevDownvotes,
+      [postID]: newDownvotes
+    }));
+    updateDownvotes(postID, newDownvotes);
+  };
+
+  const deletePost = async (toggleModal) => {
+    await supabase
+      .from('Posts')
+      .delete()
+      .eq('id', postID); 
+    
+      toggleModal();
+  };
+
   return (
     <div className="container">
       <Navbar />
       <div className="posts-area">
-        <div className="post-content">
-          <h1>{state.Title}</h1>
-          <p>{state.Body}</p>
-          <Link to={`/${postID}/editPost`} state={{ id: `${postID}`, title: `${state.Title}`, body: `${state.Body}` }}><button>Edit Post ✍️</button></Link>
+      <div className="post-content">
+        {post && (
+          <>
+            <h1>{post.title}</h1>
+            <p>{post.post_body}</p>
+            <Link to={`/${postID}/editPost`} state={{ id: postID, title: post.title, body: post.post_body }}>
+              <button>Edit Post ✍️</button>
+            </Link>
+          </>
+        )}
+      </div>
+
+        <div className="upvote_btns">
+          <button id="upvote-btn" onClick={() => incrementUpvotes(postID)}>Upvote 👍 {postUpvotes[postID]}</button>
+          <button id="downvote-btn" onClick={() => incrementDownvotes(postID)}>Downvote 👎 {postDownvotes[postID]}</button>
         </div>
+        <Modal deletePost={deletePost}/>
       </div>
     </div>
   )

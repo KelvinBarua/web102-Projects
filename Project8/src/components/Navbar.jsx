@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Navbar() {
+const Navbar = ({searchInput, setSearchInput}) => {
   return (
     <div className="navbar">
       <div className="nav-btns">
@@ -10,7 +10,11 @@ function Navbar() {
       <div className="search-form-container">
         <form className="search-form">
           <label for="search-input">Search</label>
-          <input type="text" id="search-input"></input>
+          <input 
+          type="text" 
+          id="search-input"
+          value={searchInput}
+          onChange={(e) => {setSearchInput(e.target.value)}}></input>
         </form>
       </div>
     </div>

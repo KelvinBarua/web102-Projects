@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 
 import Navbar from "../components/Navbar";
@@ -18,18 +18,18 @@ function CreatePost(){
       const { data, error } = await supabase
         .from('Posts')
         .insert([
-          { title: postTitle, post_body: postBody, upvotes: 0 }
+          { title: postTitle, post_body: postBody, upvotes: 0, downvotes: 0 }
         ]);
       
       if (error) throw error;
-      alert("Post created! 👍")
+      alert(`Post created! 👍`);
 
       // Reset the form fields after successful insertion
       setPostTitle('');
       setPostBody("");
     } catch (err) {
       console.error('Error inserting data:', err);
-      alert('Failed to create crewmate: ' + err.message);
+      alert('Failed to create post: ' + err.message);
     }
   };
 
