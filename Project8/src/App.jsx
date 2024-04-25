@@ -104,7 +104,11 @@ function App() {
               <Link to={`/${post.id}`} state={{ Title: `${post.title}`, Body: `${post.post_body}`, id: `${post.id}` }}>
                 <div className="post-content">
                   <h1 id="post-title">{post.title}</h1>
-                  <h2 id="post-body">{post.post_body}</h2>
+                  {post.edited ? (
+                    <h2 id="post-body">{post.post_body} (edited)</h2>
+                  ) : (
+                    <h2 id="post-body">{post.post_body}</h2>
+                  )}
                   <p>Post created at: {dates[index]}</p>
                 </div>
               </Link>

@@ -20,13 +20,13 @@ function EditPost(){
     event.preventDefault();
     await supabase
       .from("Posts")
-      .update({ title: postTitle, post_body: postBody })
+      .update({ title: postTitle, post_body: postBody, edited: true })
       .eq("id", postID);
     setPostTitle('');
     setPostBody("");
 
     alert("Post updated! Going back home...");
-    navigate("/");
+    navigate(`/`);
   };
 
   return (

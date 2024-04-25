@@ -7,6 +7,7 @@ import Navbar from "../components/Navbar"
 import Modal from "../components/Modal";
 
 import { supabase } from "../supabaseClient";
+import CommentForm from "../components/CommentForm";
 
 function PostInfo() {
   let { state } = useLocation();
@@ -16,6 +17,8 @@ function PostInfo() {
   const [postDownvotes, setPostDownvotes] = useState({});
 
   const [post, setPost] = useState(null);
+
+  const [postComments, setPostComments] = useState([]);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -42,6 +45,23 @@ function PostInfo() {
 
     fetchPosts();
   }, [postID]);
+
+  useEffect(() => {
+    const fetchComments = async () => {
+      const { data, error } = await supabase
+        .from('Comments')
+        .select();
+      
+      if (error) {
+        console.log("Error fetching data:", error);
+      } else {
+        const filtered = data.filter((comment) => comment.for_post == postID);
+        setPostComments(filtered);
+      }
+    };
+
+    fetchComments();
+  }, [postComments]);
 
 
   const updateUpvotes = async (postID, newUpvotes) => {
@@ -80,9 +100,17 @@ function PostInfo() {
     await supabase
       .from('Posts')
       .delete()
-      .eq('id', postID); 
+      .eq('id', postID);
+      deleteComments(); 
     
       toggleModal();
+  };
+
+  const deleteComments = async () => {
+    await supabase
+      .from('Comments')
+      .delete()
+      .eq('for_post', postID); 
   };
 
   return (
@@ -104,8 +132,22 @@ function PostInfo() {
         <div className="upvote_btns">
           <button id="upvote-btn" onClick={() => incrementUpvotes(postID)}>Upvote 👍 {postUpvotes[postID]}</button>
           <button id="downvote-btn" onClick={() => incrementDownvotes(postID)}>Downvote 👎 {postDownvotes[postID]}</button>
+          <Modal deletePost={deletePost}/>
         </div>
-        <Modal deletePost={deletePost}/>
+        <CommentForm postID={postID}/>
+        <div className="comments">
+          <h1>Comments:</h1>
+          {postComments.length <= 0 ? (
+            <h3>No comments yet 😔</h3>
+          ) : (
+            postComments.map((comment) => (
+              <div className="comment" key={comment.id}>
+                <h3>{comment.comment_body}</h3>
+              </div>
+            ))
+          )}
+          {console.log(postComments)}
+        </div>
       </div>
     </div>
   )

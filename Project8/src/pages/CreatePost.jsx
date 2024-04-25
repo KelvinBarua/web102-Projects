@@ -18,7 +18,7 @@ function CreatePost(){
       const { data, error } = await supabase
         .from('Posts')
         .insert([
-          { title: postTitle, post_body: postBody, upvotes: 0, downvotes: 0 }
+          { title: postTitle, post_body: postBody, upvotes: 0, downvotes: 0, edited: false }
         ]);
       
       if (error) throw error;

@@ -108,6 +108,8 @@ a:hover {
   color: white;
   border: 2px solid white;
   border-radius: 25px;
+
+  background-color: rgb(20, 2, 109);
   
   transition: 0.3s;
 }
@@ -253,6 +255,65 @@ button:hover {
   border-color: #646cff;
 }
 
+/*comments section css*/
+
+.comments-section{
+  min-width: fit-content;
+
+  background-color: rgb(20, 2, 109);
+
+  border: 2px white solid;
+
+  border-radius: 25px;
+  padding: 25px;
+}
+
+#comment-field{
+  max-height: fit-content;
+  min-height: 50px;
+  min-width: 25%;
+  
+  font-size: 25px;
+  resize: none;
+  overflow: hidden;
+
+  border-radius: 25px;
+  padding: 15px;
+  margin-top: 15px;
+
+  vertical-align: top;
+  text-align: start;
+}
+
+.comments{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  text-align: center;
+
+  min-width: 75%;
+  background-color: rgb(20, 2, 109);
+
+  border: 2px solid white;
+  border-radius: 25px;
+}
+
+.comment{
+  background-color: #535bf2;
+  width: 75%;
+
+  border-radius: 25px;
+  text-align: left;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-bottom: 15px;
+
+  align-self: center;
+}
+
+/*end of comments section css*/
+
 
 /* modal css */
 
@@ -272,12 +333,14 @@ button:hover {
 }
 
 .btn-modal{
+  font-size: small;
+
   min-width: fit-content;
   max-width: 50px;
   align-self: center;
 
   margin-top: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 0px;
 
   background-color: rgb(181, 15, 15);
 }
