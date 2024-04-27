@@ -122,6 +122,7 @@ function PostInfo() {
           <>
             <h1>{post.title}</h1>
             <p>{post.post_body}</p>
+            <p>Post created: {state.date} {state.time}</p>
             <Link to={`/${postID}/editPost`} state={{ id: postID, title: post.title, body: post.post_body }}>
               <button>Edit Post ✍️</button>
             </Link>
@@ -146,7 +147,6 @@ function PostInfo() {
               </div>
             ))
           )}
-          {console.log(postComments)}
         </div>
       </div>
     </div>
