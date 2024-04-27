@@ -1,1 +1,0 @@
-[] A separate post page for each created post, where any additional information is shown is linked whenever a user clicks a post	
